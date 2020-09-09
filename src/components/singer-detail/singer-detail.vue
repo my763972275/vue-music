@@ -7,7 +7,7 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import {getSingerDetail} from '../../api/singer'
+import {getSingerDetail,getSongVkey} from '../../api/singer'
 import {ERR_OK} from '../../api/config'
 import Song from '../../common/js/song'
 import {createSong} from '../../common/js/song'
@@ -42,16 +42,23 @@ import MusicList from '../music-list/music-list'
                 }
                 getSingerDetail(this.singer.id).then(res =>{
                     if(res.code == ERR_OK){
-                        console.log(res.data.list)
                         this.songs = this._normalizeSongs(res.data.list)
                         console.log(this.songs)
                     }
+                })
+            },
+            // 获取歌曲的vkey
+            _getVkey(songmid){
+                getSongVkey(songmid).then(res => {
+                    console.log(res)
                 })
             },
             _normalizeSongs(list){
                 let ret = []
                 list.forEach((item) => {
                     let {musicData} = item
+                    // console.log(item)
+                    // this._getVkey(item.songmid)
                     if(musicData.songid && musicData.albummid){
                         ret.push(createSong(musicData))
                     }

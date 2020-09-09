@@ -1,6 +1,6 @@
 import jsonp from '../common/js/jsonp'
 import {commonParams,options} from '../api/config'
-
+import axios from 'axios'
 export  const singerList =[
     { "country": "", "singer_id": 29858, "singer_mid": "00067r4p0wBDDN", "singer_name": "任然", "singer_pic": "http:\/\/y.gtimg.cn\/music\/photo_new\/T001R150x150M00000067r4p0wBDDN.webp" }, 
     { "country": "", "singer_id": 4558, "singer_mid": "0025NhlN2yWrP4", "singer_name": "周杰伦", "singer_pic": "http:\/\/y.gtimg.cn\/music\/photo_new\/T001R150x150M0000025NhlN2yWrP4.webp" }, 
@@ -117,4 +117,45 @@ export function getSingerList() {
   })
 
   return jsonp(url, data, options)
+}
+
+// 获取歌曲的vkey
+export function getSongVkey(songmid) {
+  const url ='/api/getSongVkey'
+  const data = Object.assign({},commonParams,{
+    "-":"getplaysongvkey564623675413412",
+    "g_tk":"94551879",
+    "loginUin":"13373122569",
+    "format":"json",
+    "inCharset":"utf8",
+    "outCharset":"utf-8",
+    "notice":0,
+    "platform":"yqq.json",
+    "needNewCode":0,
+    "data":{
+      "req_0":{
+        "module":"vkey.GetVkeyServer",
+        "method":"CgiGetVkey",
+        "param":{
+          "guid":5774462924,
+          "songmid":[ `${songmid}` ],
+          "songtype":[0],
+          "uin":"0",
+          "loginflag":1,
+          "platform":"20"
+        }
+      },
+      "comm":{
+        "uin":1337312569,
+        "format":"json",
+        "ct":24,
+        "cv":0
+      }
+    }
+  })
+  return axios.get(url,{
+    params:data
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
 }

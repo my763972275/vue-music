@@ -30,6 +30,7 @@ const HOT_SINGER_LENGTH = 10
             // 获取歌手列表数据
             _getSingerList(){
                 getSingerList().then(res => {
+                    console.log(res)
                     if(res.code === ERR_OK){
                         this.singers = this._normalizeSingrt(res.data.list)
                     }
