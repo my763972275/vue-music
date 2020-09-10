@@ -36,7 +36,7 @@ const RESERVED_HEIGHT = 40
 const transform = prefixStyle('transform')
 const backdrop = prefixStyle('backdrop-filter')
     export default {
-        mixins:[playlistMixin],
+        mixins: [playlistMixin],
         components:{
             Scroll,
             SongList,
@@ -126,7 +126,7 @@ const backdrop = prefixStyle('backdrop-filter')
                     list:this.songs
                 })
             },
-            handlePlayList(playlist){
+           handlePlaylist(playlist) {
                 const bottom = playlist.length > 0 ? '60px' : ''
                 this.$refs.list.$el.style.bottom = bottom
                 this.$refs.list.refresh()

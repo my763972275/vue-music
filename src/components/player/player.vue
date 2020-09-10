@@ -78,11 +78,12 @@
                     <i @click.stop="togglePlaying" class="icon-mini" :class="miniIcon"></i>
                  </progress-circle>
             </div>
-            <div class="control">
+            <div class="control" @click.stop="showPlaylist">
                 <i class="icon-playlist"></i>
             </div>
         </div>
         </transition>
+        <play-list ref="playlist"></play-list>
         <audio ref="audio" :src="currentSong.url" @timeupdate="updatetime" @canplay="ready" @error="error" @ended = "end"></audio>
     </div>
 </template>
@@ -97,12 +98,14 @@ import {playMode} from '../../common/js/config'
 import {shuffle} from '../../common/js/utils'
 import Lyric from 'lyric-parser'
 import Scroll from '../../base/scroll/scroll'
+import PlayList from '../../components/playlist/playlist'
 const transform = prefixStyle('transform')
 export default {
     components:{
         ProgressBar,
         ProgressCircle,
-        Scroll
+        Scroll,
+        PlayList
     },
     data(){
         return{
@@ -172,6 +175,9 @@ export default {
         }
     },
     methods:{
+      showPlaylist(){
+        this.$refs.playlist.show()
+      },
       middleTouchStart(e){
         this.touch.initiated = true
         const touches = e.touches[0]
