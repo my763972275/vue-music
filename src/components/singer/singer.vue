@@ -11,11 +11,11 @@ import {ERR_OK} from '../../api/config'
 import Singer from '../../common/js/singer'
 import ListView from '../../base/listview/listview'
 import {mapMutations} from 'vuex'
-import {playlistMixin} from '../../common/js/mixin'
+ import {playlistMixin} from '../../common/js/mixin'
 const HOT_NAME = '热门'
 const HOT_SINGER_LENGTH = 10
     export default {
-        mixins:[playlistMixin],
+        mixins: [playlistMixin],
         components:{
             ListView
         },
@@ -29,11 +29,11 @@ const HOT_SINGER_LENGTH = 10
             // this._getSingerDetail()
         },
         methods:{
-            handlePlayList(playlist){
-                const bottom = playlist.length > 0 ? '60px' : ''
-                this.$refs.singer.$el.style.bottom = bottom
-                this.$refs.list.refresh()
-            },
+           handlePlaylist(playlist) {
+            const bottom = playlist.length > 0 ? '60px' : ''
+            this.$refs.singer.style.bottom = bottom
+            this.$refs.list.refresh()
+          },
             // 获取歌手列表数据
             _getSingerList(){
                 getSingerList().then(res => {

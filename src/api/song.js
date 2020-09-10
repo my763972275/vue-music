@@ -20,4 +20,4 @@ export function getLyric(mid) {
     }).then((res) => {
       return Promise.resolve(res.data)
     })
-  }
+}

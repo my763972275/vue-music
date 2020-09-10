@@ -43,7 +43,7 @@
     import {playlistMixin} from '../../common/js/mixin'
     import {mapMutations} from 'vuex'
     export default {
-     mixins:[playlistMixin],
+     mixins: [playlistMixin],
      components:{
         Slider,
         Scroll,
@@ -66,11 +66,11 @@
           })
           this.setDisc(item)
         },
-        handlePlayList(playlist){
-                const bottom = playlist.length > 0 ? '60px' : ''
-                this.$refs.recommend.$el.style.bottom = bottom
-                this.$refs.scroll.refresh()
-            },
+        handlePlaylist(playlist) {
+          const bottom = playlist.length > 0 ? '60px' : ''
+          this.$refs.recommend.style.bottom = bottom
+          this.$refs.scroll.refresh()
+        },
           _getRecommend(){
               getRecommend().then(res => {
                   if(res.code === ERR_OK){

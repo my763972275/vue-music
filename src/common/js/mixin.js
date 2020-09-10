@@ -1,24 +1,24 @@
 import {mapGetters} from 'vuex'
 export const playlistMixin = {
-    computed:{
-        ...mapGetters([
-            'playlist'
-        ])
+    computed: {
+      ...mapGetters([
+        'playlist'
+      ])
     },
-    mounted(){
-      this.hanlePlayList(this.playlist)
+    mounted() {
+      this.handlePlaylist(this.playlist)
     },
-    activated(){
-      this.hanlePlayList(this.playlist)
+    activated() {
+      this.handlePlaylist(this.playlist)
     },
-    watch:{
-        playlist(newVal){
-           this.hanlePlayList(newVal)
-        }
+    watch: {
+      playlist(newVal) {
+        this.handlePlaylist(newVal)
+      }
     },
-    methods:{
-        hanlePlayList(){
-            throw new Error('component must implement handlePlayList method')
-        }
+    methods: {
+      handlePlaylist() {
+        throw new Error('component must implement handlePlaylist method')
+      }
     }
-}
+  }
