@@ -23,3 +23,14 @@ export const searchHistory = state => state.searchHistory
 export const currentSong = (state) => {
   return state.playlist[state.currentIndex] || {}
 }
+export const playHistory = (state) => {
+  return state.playHistory.map((song) => {
+    return new Song(song)
+  })
+}
+
+export const favoriteList = (state) => {
+  return state.favoriteList.map((song) => {
+    return new Song(song)
+  })
+}

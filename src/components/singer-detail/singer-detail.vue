@@ -10,7 +10,7 @@ import {mapGetters} from 'vuex'
 import {getSingerDetail,getSongVkey} from '../../api/singer'
 import {ERR_OK} from '../../api/config'
 import Song from '../../common/js/song'
-import {createSong} from '../../common/js/song'
+import {createSong,getMusicVkey} from '../../common/js/song'
 import MusicList from '../music-list/music-list'
     export default {
         components:{
@@ -49,7 +49,7 @@ import MusicList from '../music-list/music-list'
             },
             // 获取歌曲的vkey
             _getVkey(songmid){
-                getSongVkey(songmid).then(res => {
+                getMusicVkey().then(res => {
                     console.log(res)
                 })
             },
@@ -57,8 +57,7 @@ import MusicList from '../music-list/music-list'
                 let ret = []
                 list.forEach((item) => {
                     let {musicData} = item
-                    // console.log(item)
-                    // this._getVkey(item.songmid)
+                    this._getVkey()
                     if(musicData.songid && musicData.albummid){
                         ret.push(createSong(musicData))
                     }
